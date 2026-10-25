@@ -2,7 +2,7 @@
 (() => {
   const originalFetch = window.fetch.bind(window);
   const dataUrl = new URL('Build/Web.data.unityweb', document.baseURI).href;
-  const totalLength = 490344248;
+  const totalLength = 490342916;
   const chunkCount = 10;
   window.fetch = async function(input, options = {}) {
     const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url, document.baseURI).href;
