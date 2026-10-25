@@ -2,8 +2,8 @@
 (() => {
   const originalFetch = window.fetch.bind(window);
   const dataUrl = new URL('Build/Web.data.unityweb', document.baseURI).href;
-  const totalLength = 764101976;
-  const chunkCount = 16;
+  const totalLength = 490344934;
+  const chunkCount = 10;
   window.fetch = async function(input, options = {}) {
     const url = new URL(typeof input === 'string' || input instanceof URL ? input : input.url, document.baseURI).href;
     if (url !== dataUrl) return originalFetch(input, options);
@@ -17,7 +17,7 @@
         try {
           while (part < chunkCount || reader) {
             if (!reader) {
-              const chunkUrl = new URL('Build/Web.data.part' + String(part++).padStart(3, '0'), document.baseURI);
+              const chunkUrl = new URL('Build/Web.data.part' + String(part++).padStart(3, '0') + '?v=' + totalLength, document.baseURI);
               const response = await originalFetch(chunkUrl, options);
               if (!response.ok) throw new Error('Game data download failed: ' + response.status + ' ' + chunkUrl);
               reader = response.body.getReader();
